@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import ReactDOM from "react-dom/client";
+import Layout from "./Layout";
+
 import './App.css';
+import TicTacToe from './pages/TicTacToe';
+import LightOn from './pages/LightOn';
+import NoPage from './pages/NoPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<TicTacToe />} />
+          <Route path="lighton" element={<LightOn />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
